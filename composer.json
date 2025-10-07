@@ -1,8 +1,28 @@
 {
+  "name": "yourname/simple-user-auth",
+  "description": "Simple user authentication system with PHP, MySQL, AJAX, and Bootstrap.",
+  "type": "project",
+  "license": "MIT",
   "require": {
-    "php": "7.0"
+    "php": ">=7.4",
+    "ext-mysqli": "*",
+    "ext-json": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^10.0"
-  }
+    "phpunit/phpunit": "^9.5",
+    "squizlabs/php_codesniffer": "^3.7",
+    "phpstan/phpstan": "^1.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "includes/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit --testdox",
+    "lint": "phpcs --standard=PSR12 includes/",
+    "analyse": "phpstan analyse includes/"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }

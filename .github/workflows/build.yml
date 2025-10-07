@@ -1,0 +1,38 @@
+name: CI - PHP Build and Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mysqli, json
+          coverage: none
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run PHP Linter
+        run: |
+          find includes/ -name "*.php" -print0 | xargs -0 -n1 php -l
+
+      - name: Run PHPStan (Static Analysis)
+        run: composer analyse
+
+      - name: Run PHPUnit tests
+        run: composer test
