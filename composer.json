@@ -20,8 +20,8 @@
   },
   "scripts": {
     "test": "phpunit --testdox",
-    "lint": "phpcs --standard=PSR12 includes/",
-    "analyse": "phpstan analyse includes/"
+    "lint": "phpcs --standard=PSR12 include/",
+    "analyse": "phpstan analyse include/"
   },
   "minimum-stability": "stable",
   "prefer-stable": true
