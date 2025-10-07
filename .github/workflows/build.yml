@@ -27,7 +27,7 @@ jobs:
 
       - name: Run PHP Linter
         run: |
-          find includes/ -name "*.php" -print0 | xargs -0 -n1 php -l
+          find include/ -name "*.php" -print0 | xargs -0 -n1 php -l
 
       - name: Run PHPStan (Static Analysis)
         run: composer analyse
