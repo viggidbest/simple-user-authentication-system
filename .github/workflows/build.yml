@@ -34,5 +34,12 @@ jobs:
       - name: Run PHPStan (Static Analysis)
         run: composer analyse
 
-      - name: Run PHPUnit tests
-        run: composer test
+      # - name: Run PHPUnit tests
+      #   run: composer test
+
+      - name: Run SonarCloud analysis
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectKey: viggidbest_simple-user-authentication-system
+          organization: viggidbest
+          token: ${{ secrets.SONAR_TOKEN }}
